@@ -131,3 +131,8 @@ void quicksort(T* a, int n) {
 	quicksortrec(a, 0, n - 1);
 }
 ```
+## 效能分析
+
+時間複雜度:理論時間複雜度為
+### Insertion & Quick: $n^2$
+### Merge & Heap: $nlogn$
