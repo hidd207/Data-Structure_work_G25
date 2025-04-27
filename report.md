@@ -29,3 +29,37 @@ void Inserition(T* a, int n) {
 		a[j + 1] = key;
 	}
 }
+```
+
+**Merge Sort**
+
+```cpp
+template<class T>
+void merge(T* a, int l, int m, int r, T* buf)
+{
+	int i = l,     
+		j = m + 1, 
+		k = 0;     
+
+	while (i <= m && j <= r)
+		buf[k++] = (a[i] <= a[j] ? a[i++] : a[j++]);
+
+	while (i <= m) buf[k++] = a[i++];  
+	while (j <= r) buf[k++] = a[j++];  
+}
+
+template <class T>
+void mergesortrec(T* a, int l, int r, T* buf) {
+	if (l >= r) return;
+	int m = (l + r) / 2;
+	mergesortrec(a, l, m, buf);
+	mergesortrec(a, m + 1, r, buf);
+	merge(a, l, m, r, buf);
+}
+
+template <class T>
+void mergesort(T* a, int n) {
+	vector<T> buf(n);
+	mergesortrec(a, 0, n - 1, buf.data());
+}
+```
